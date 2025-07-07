@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Programming Joke</title>
+  <link rel="stylesheet" href="CSS\styling.css">
+</head>
+<body>
+  <h1>Programming Joke</h1>
+  <div class="card">
+    <% if (joke.type === "single") { %>
+    <p><%= joke.joke %></p>
+  <% } else { %>
+    <p><strong>Setup:</strong> <%= joke.setup %></p>
+    <p><strong>Punchline:</strong> <%= joke.delivery %></p>
+  <% } %>
+ </div>
+    <a href="/">Get Another Joke</a>
+
+  
+</body>
+</html>
