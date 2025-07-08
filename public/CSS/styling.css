@@ -13,80 +13,76 @@ body {
   padding-bottom: 2rem;
   box-sizing: border-box;
 }
+
 h1 {
   color: white;
   font-family: "Titan One", cursive;
   margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
 }
+
 .card {
-  background: url("../Image/947477.jpg");
+  background: url("/Image/channar.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: var(--card-width);
-  height: var(--card-height);
-  padding: 3px;
+
+  /* ✅ Responsive width/height */
+  width: 90%;
+  max-width: 400px;
+  aspect-ratio: 2 / 3;
+
+  padding: 10px;
   position: relative;
-  border-radius: 6px;
+  border-radius: 12px;
+
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  display: flex;
-  font-size: 1.5em;
+
+  font-size: 1.2em;
   color: rgb(88 199 250 / 0%);
   font-family: "Gloria Hallelujah", cursive;
+
+  transition: color 1s ease;
 }
 
 .card:hover {
-  color: rgb(2, 27, 39);
-  transition: color 1s;
+  color: rgb(88 199 250 / 100%);
 }
-.card:hover:before,
-.card:hover:after {
-  animation: none;
-  opacity: 0;
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  animation: spin 2.5s linear infinite;
 }
 
 .card::before {
-  content: "";
   width: 104%;
   height: 102%;
-  border-radius: 8px;
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #3c67e3 43%,
-    #4e00c2
-  );
-  position: absolute;
-  z-index: -1;
-  top: -1%;
+  border-radius: 12px;
+  top: -2%;
   left: -2%;
-  animation: spin 2.5s linear infinite;
 }
 
 .card::after {
-  position: absolute;
-  content: "";
-  top: calc(var(--card-height) / 6);
+  top: 10%;
   left: 0;
   right: 0;
-  z-index: -1;
   height: 100%;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
   transform: scale(0.8);
-  filter: blur(calc(var(--card-height) / 6));
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #3c67e3 43%,
-    #4e00c2
-  );
+  filter: blur(30px);
   opacity: 1;
   transition: opacity 0.5s;
-  animation: spin 2.5s linear infinite;
 }
+
 @property --rotate {
   syntax: "<angle>";
   initial-value: 132deg;
@@ -103,10 +99,42 @@ h1 {
 }
 
 a {
-  color: #212534;
+  color: #ffffff;
+  text-decoration: none;
   font-family: sans-serif;
   font-weight: bold;
   margin-top: 2rem;
-  border-bottom:1px solid white;
+  padding: 12px 24px;
+  background-color: #5ddcff;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background-color 0.3s;
 }
 
+a:hover {
+  background-color: #3c67e3;
+  color: white;
+}
+
+p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0 10px;
+}
+
+/* ✅ Mobile tweaks */
+@media (max-width: 600px) {
+  .card {
+    font-size: 1rem;
+    padding: 6px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  a {
+    width: 90%;
+    text-align: center;
+  }
+}
